@@ -221,7 +221,7 @@ const NavbarLayer3 = (props) => {
   return (
     <>
       <div
-          className={`fixed flex top-0 w-full ${toggleState ? 'translate-x-0' : '-translate-x-full'} h-full`} >
+        className={`fixed flex top-0 w-full ${toggleState ? 'translate-x-0' : '-translate-x-full'} h-full`} >
         <div className="bg-white w-[75vw] duration-1000">
           <div className="w-full bg-yellow-300 p-2.5 font-black text-center text-3xl">
             BEYOUNG
@@ -245,7 +245,7 @@ const NavbarLayer3 = (props) => {
               </Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content className="TabsContent" value="tab1">
-              <div className="h-[100vh] overflow-auto">
+              <div className="h-[70vh] overflow-auto">
                 <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
                   <Accordion.Item className="AccordionItem" value="item-1">
                     <AccordionTrigger>NEW ARRIVALS</AccordionTrigger>
@@ -513,215 +513,218 @@ const NavbarLayer3 = (props) => {
 
             </Tabs.Content>
             <Tabs.Content className="TabsContent" value="tab2">
-            <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
-                
+            <div className="h-[70vh] overflow-auto">
+              <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
+                  
 
-                <Accordion.Item className="AccordionItem" value="item-2">
-                  <AccordionTrigger>SHOP</AccordionTrigger>
-                  <AccordionContent>
-                    
-                    <Accordion.Root type="single" defaultValue="item-3" collapsible>
-                      <Accordion.Item className="AccordionItem" value="item-3">
-                        <AccordionTrigger>T-Shirts</AccordionTrigger>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="/clothing/plain-t-shirt-women"
-                            state={{data: plainTShirtWomen}}
-                          >
-                            Plain T-Shirts
-                          </Link>
-                        </AccordionContent>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="/clothing/printed-t-shirt-women"
-                            state={{data: printedTShirtWomen}}
-                          >
-                            Printed T-Shirts
-                          </Link>
-                        </AccordionContent>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="/clothing/oversized-t-shirt-women"
-                            state={{data: overSizedTShirtWomen}}
-                          >
-                            Oversize T-Shirts
-                          </Link>
-                        </AccordionContent>                        
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="/clothing/full-sleeve-t-shirt-women"
-                            state={{data: fullSleeveTShirtWomen}}
-                          >
-                            Full Sleeve T-Shirts
-                          </Link>
-                        </AccordionContent>                        
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="clothing/plus-size-t-shirt-women"
-                            state={{data: plusSizeTShirt}}
-                          >
-                            Plus Size T-Shirts
-                          </Link>
-                        </AccordionContent>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="clothing/women"
-                            state={{data: women}}
-                          >
-                            View All
-                          </Link>
-                        </AccordionContent>
-                      </Accordion.Item>
-                    </Accordion.Root>
+                  <Accordion.Item className="AccordionItem" value="item-2">
+                    <AccordionTrigger>SHOP</AccordionTrigger>
+                    <AccordionContent>
+                      
+                      <Accordion.Root type="single" defaultValue="item-3" collapsible>
+                        <Accordion.Item className="AccordionItem" value="item-3">
+                          <AccordionTrigger>T-Shirts</AccordionTrigger>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="/clothing/plain-t-shirt-women"
+                              state={{data: plainTShirtWomen}}
+                            >
+                              Plain T-Shirts
+                            </Link>
+                          </AccordionContent>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="/clothing/printed-t-shirt-women"
+                              state={{data: printedTShirtWomen}}
+                            >
+                              Printed T-Shirts
+                            </Link>
+                          </AccordionContent>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="/clothing/oversized-t-shirt-women"
+                              state={{data: overSizedTShirtWomen}}
+                            >
+                              Oversize T-Shirts
+                            </Link>
+                          </AccordionContent>                        
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="/clothing/full-sleeve-t-shirt-women"
+                              state={{data: fullSleeveTShirtWomen}}
+                            >
+                              Full Sleeve T-Shirts
+                            </Link>
+                          </AccordionContent>                        
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="clothing/plus-size-t-shirt-women"
+                              state={{data: plusSizeTShirt}}
+                            >
+                              Plus Size T-Shirts
+                            </Link>
+                          </AccordionContent>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="clothing/women"
+                              state={{data: women}}
+                            >
+                              View All
+                            </Link>
+                          </AccordionContent>
+                        </Accordion.Item>
+                      </Accordion.Root>
 
-                    <Accordion.Root type="single" defaultValue="item-4" collapsible>
-                      <Accordion.Item className="AccordionItem" value="item-4">
-                        <AccordionTrigger>Shirts</AccordionTrigger>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="/clothing/plain-t-shirt-women"
-                            state={{data: plainTShirt}}
+                      <Accordion.Root type="single" defaultValue="item-4" collapsible>
+                        <Accordion.Item className="AccordionItem" value="item-4">
+                          <AccordionTrigger>Shirts</AccordionTrigger>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="/clothing/plain-t-shirt-women"
+                              state={{data: plainTShirt}}
+                            >
+                              Plain Shirts
+                            </Link>
+                          </AccordionContent>                        
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                          <Link
+                            to="/clothing/shirt-women"
+                            state={{data: shirtsWomen}}
                           >
-                            Plain Shirts
+                            Shirts
                           </Link>
-                        </AccordionContent>                        
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                        <Link
-                          to="/clothing/shirt-women"
-                          state={{data: shirtsWomen}}
-                        >
-                          Shirts
-                        </Link>
-                        </AccordionContent>
-                      </Accordion.Item>
-                    </Accordion.Root>                    
+                          </AccordionContent>
+                        </Accordion.Item>
+                      </Accordion.Root>                    
 
-                    <Accordion.Root type="single" defaultValue="item-5" collapsible>
-                      <Accordion.Item className="AccordionItem" value="item-5">
-                        <AccordionTrigger>Winter Wears</AccordionTrigger>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="clothing/jackets-women"
-                            state={{data: jacketsWomen}}
-                          >
-                            Jackets
-                          </Link>
-                        </AccordionContent>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="clothing/sweatshirt-women"
-                            state={{data: sweatShirtsWomen}}
-                          >
-                            Sweatshirts
-                          </Link>
-                        </AccordionContent>
-                        <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                          <Link to="clothing/hoodies-women"
-                            state={{data: hoodiesWomen}}
-                          >
-                            Hoodies
-                          </Link> 
-                        </AccordionContent>
-                      </Accordion.Item>
-                    </Accordion.Root>
-                  </AccordionContent>
-                </Accordion.Item>
+                      <Accordion.Root type="single" defaultValue="item-5" collapsible>
+                        <Accordion.Item className="AccordionItem" value="item-5">
+                          <AccordionTrigger>Winter Wears</AccordionTrigger>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="clothing/jackets-women"
+                              state={{data: jacketsWomen}}
+                            >
+                              Jackets
+                            </Link>
+                          </AccordionContent>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="clothing/sweatshirt-women"
+                              state={{data: sweatShirtsWomen}}
+                            >
+                              Sweatshirts
+                            </Link>
+                          </AccordionContent>
+                          <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                            <Link to="clothing/hoodies-women"
+                              state={{data: hoodiesWomen}}
+                            >
+                              Hoodies
+                            </Link> 
+                          </AccordionContent>
+                        </Accordion.Item>
+                      </Accordion.Root>
 
-                <Accordion.Item className="AccordionItem" value="item-4">
-                <AccordionTrigger>BEYOUNG ORIGINALS</AccordionTrigger>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                  <Link to="out-of-stock">
-                    Combos
-                  </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/travel-women"
-                        state={{data: travelWomen}}
-                    >
-                      Travel
-                    </Link>
-                  </AccordionContent>
-                </Accordion.Item>
-                
-                <div 
-                  onClick={() => handlerNavbarToggle(false)}
-                  className="px-[20px] py-[8px] text-[15px]"
-                >
-                  <Link
-                    to="clothing/women"
-                    state={{data: women}}
+                    </AccordionContent>
+                  </Accordion.Item>
+
+                  <Accordion.Item className="AccordionItem" value="item-4">
+                  <AccordionTrigger>BEYOUNG ORIGINALS</AccordionTrigger>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="out-of-stock">
+                        Combos
+                      </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/travel-women"
+                          state={{data: travelWomen}}
+                      >
+                        Travel
+                      </Link>
+                    </AccordionContent>
+                  </Accordion.Item>
+                  
+                  <div 
+                    onClick={() => handlerNavbarToggle(false)}
+                    className="px-[20px] py-[8px] text-[15px]"
                   >
-                    SHOP BY LOOK
-                  </Link>
-                </div>
-
-                <Accordion.Item className="AccordionItem" value="item-5">
-                <AccordionTrigger>SHOP BY THEME</AccordionTrigger>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                  <Link
-                    to="clothing/gym-women"
-                    state={{data: gymWomen}}
-                  > 
-                    Gym
-                  </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/travel-women"
-                        state={{data: travelWomen}}
+                    <Link
+                      to="clothing/women"
+                      state={{data: women}}
                     >
-                      Travel
-                    </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/sports-women"
-                      state={{data: sportsWomen}}
-                    >
-                      Sports
-                    </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/music-women"
-                        state={{data: musicWomen}}
-                    >
-                      Music
-                    </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/biker-women"
-                      state={{data: bikerWomen}}
-                    >
-                      Biker
-                    </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/funky-women"
-                      state={{data: funkyWomen}}
-                    >
-                      Funky
-                    </Link>
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/god-women"
-                      state={{data: godWomen}}
-                    >
-                      God
-                    </Link>                  
-                  </AccordionContent>
-                  <AccordionContent onClick={() => handlerNavbarToggle(false)}>
-                    <Link to="clothing/quote-women"
-                      state={{data: quotesWomen}}
-                    >
-                      Quotes
-                    </Link>
-                  </AccordionContent>
-                </Accordion.Item>
-
-                <div className="flex flex-col justify-center items-center">
-                  <div>
-                    DOWNLOAD THE APP
-                  </div>
-                  <div className="flex flex-row gap-2.5">
-                    <Link target="_blank" to="https://play.google.com/store/apps/details?id=com.beyoungapp&referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter%26anid%3Dadmob&pli=1">
-                      <img className="max-w-[120px]" src={psImage1} alt="" />
-                    </Link>
-                    <Link target="_blank" to="https://apps.apple.com/in/app/beyoung/id1665513310">
-                      <img className="max-w-[120px]" src={psImage2} alt="" />
+                      SHOP BY LOOK
                     </Link>
                   </div>
-                </div>
+
+                  <Accordion.Item className="AccordionItem" value="item-5">
+                  <AccordionTrigger>SHOP BY THEME</AccordionTrigger>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                    <Link
+                      to="clothing/gym-women"
+                      state={{data: gymWomen}}
+                    > 
+                      Gym
+                    </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/travel-women"
+                          state={{data: travelWomen}}
+                      >
+                        Travel
+                      </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/sports-women"
+                        state={{data: sportsWomen}}
+                      >
+                        Sports
+                      </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/music-women"
+                          state={{data: musicWomen}}
+                      >
+                        Music
+                      </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/biker-women"
+                        state={{data: bikerWomen}}
+                      >
+                        Biker
+                      </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/funky-women"
+                        state={{data: funkyWomen}}
+                      >
+                        Funky
+                      </Link>
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/god-women"
+                        state={{data: godWomen}}
+                      >
+                        God
+                      </Link>                  
+                    </AccordionContent>
+                    <AccordionContent onClick={() => handlerNavbarToggle(false)}>
+                      <Link to="clothing/quote-women"
+                        state={{data: quotesWomen}}
+                      >
+                        Quotes
+                      </Link>
+                    </AccordionContent>
+                  </Accordion.Item>
+
+                  <div className="flex flex-col justify-center items-center">
+                    <div>
+                      DOWNLOAD THE APP
+                    </div>
+                    <div className="flex flex-row gap-2.5">
+                      <Link target="_blank" to="https://play.google.com/store/apps/details?id=com.beyoungapp&referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter%26anid%3Dadmob&pli=1">
+                        <img className="max-w-[120px]" src={psImage1} alt="" />
+                      </Link>
+                      <Link target="_blank" to="https://apps.apple.com/in/app/beyoung/id1665513310">
+                        <img className="max-w-[120px]" src={psImage2} alt="" />
+                      </Link>
+                    </div>
+                  </div>
 
               </Accordion.Root>
+            </div>
             </Tabs.Content>
           </Tabs.Root>
         </div>

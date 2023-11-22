@@ -717,6 +717,7 @@ const CheckoutPayment = () => {
         const newData = {
           userData: location.state.data,
           cartData: result.data.items,
+          token: tokenVal,
         };
         setDataArray([...parsedData, newData]);
       }

@@ -105,12 +105,13 @@ function App() {
           <Route path="/checkout/payment" element={ <CheckoutPayment /> } />
           <Route path="/out-of-stock" element={ <OutOfStock /> } />
           <Route path="/myaccount/:followlink" element={ <MyAccount /> } />
+          <Route path="*" element={ <OutOfStock /> } />
         </Routes>
         
         {location.pathname !== "/checkout" &&
           <Footer />
         }
-        
+
       </div>
     </>
   );

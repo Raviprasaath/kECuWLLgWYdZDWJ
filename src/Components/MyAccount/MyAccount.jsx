@@ -11,6 +11,9 @@ import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import emptyCart from "../../assets/EMPTY CARTORDER PAGE..png";
+import TextField from "@mui/material/TextField";
+import Tooltip from '@mui/material/Tooltip';
+import Switch from '@mui/material/Switch';
 
 import "./MyAccount.css"
 
@@ -58,24 +61,126 @@ const MyAccount = () => {
     let booleanCondition = phoneError && userNameError
 
     let orderedDataFromLocal = JSON.parse(localStorage.getItem('orderedProducts')) || [];
-   
+    
+
     const [orderPageSwap, setOrderPageSwap] = useState(false);
     const [clickedCartNumber, setClickedCartNumber] = useState(0);
+    const [selectedOrderedProduct, setSelectedOrderedProduct] = useState();
     
+
+    const [firstName, setFirstName] = useState(false);
+    const [lastName, setLastName] = useState(false);
+    const [email, setEmail] = useState(false);
+    const [phone, setPhone] = useState(false);
+    const [pinCode, setPinCode] = useState(false);
+    const [city, setCity] = useState(false);
+    const [state, setState] = useState(false);
+    const [address, setAddress] = useState(false);
+
+    const [firstNameValue, setFirstNameValue] = useState("");
+    const [lastNameValue, setLastNameValue] = useState("");
+    const [emailValue, setEmailValue] = useState("");
+    const [phoneValue, setPhoneValue] = useState("");
+    const [pinCodeValue, setPinCodeValue] = useState("");
+    const [cityValue, setCityValue] = useState("");
+    const [stateValue, setStateValue] = useState("");
+    const [addressValue, setAddressValue] = useState("");
+
+    const [dataMerging, setDataMerging] = useState({});
+
+    const [pinCodeCity, setPinCodeCity] = useState("")
+    const [pinCodeState, setPinCodeState] = useState("")
+    const [pinCodeNotMatch, setPinCodeNotMatch] = useState(false);
+
+    const [addressBooleanCondition, setAddressBooleanCondition] = useState(false);
+
     const handlerOrderValue = (value) => {
         setOrderPageSwap(true);
-        setClickedCartNumber(value.target.textContent.replace('Order ', ""));
+        setSelectedOrderedProduct(value);
+        // setClickedCartNumber(value.target.textContent.replace('Order ', ""));
     }
 
+    const userCompleteDataGetting = JSON.parse(localStorage.getItem('userCompleteData'));
+    const [cartEmptyIndicator, setCartEmptyIndicator] = useState(false);
+    
+    const [togglerSwitch, setTogglerSwitch] = useState(false);
+
+    const handlerSwitchControl = () => {
+        setTogglerSwitch(!togglerSwitch);
+        if (!togglerSwitch) {
+            setFirstName(false);
+            setLastName(false);
+            setEmail(false);
+            setPhone(false);
+            setPinCode(false);
+            setCity(false);
+            setState(false);
+            setAddress(false);
+            setFirstNameValue("");
+            setLastNameValue("");
+            setPhoneValue("");
+            setPinCodeValue("");
+            setCityValue("");
+            setStateValue("");
+            setAddressValue("");
+        } else {
+            setProfilePicFetch(userCompleteDataGetting?.data.user.profileImage);
+            setProfileDisplayName(userCompleteDataGetting?.data.user.name);
+            setMobileNumber(userCompleteDataGetting?.data.user.phone);
+            setFirstNameValue(userCompleteDataGetting?.data.user.name.slice(0, userCompleteDataGetting?.data.user.name.indexOf(' ')));
+            setLastNameValue(userCompleteDataGetting?.data.user.name.slice(userCompleteDataGetting?.data.user.name.indexOf(' ')));
+            setEmailValue(userCompleteDataGetting?.data.user.email);
+            setPhoneValue(userCompleteDataGetting?.data.user.phone);
+            setPinCodeValue(userCompleteDataGetting?.data.user.address[0]?.zipCode);
+            setCityValue(userCompleteDataGetting?.data.user.address[0]?.city);
+            setStateValue(userCompleteDataGetting?.data.user.address[0]?.state);
+            setAddressValue(userCompleteDataGetting?.data.user.address[0]?.street);
+
+            setFirstName(true);
+            setLastName(true);
+            setEmail(true);
+            setPhone(true);
+            setPinCode(true);
+            setCity(true);
+            setState(true);
+            setAddress(true);
+        }
+    };
+
+
+    let counter = 0
     const orderedProduct = (
         !orderPageSwap ? (
             <div className="m-2 flex flex-row gap-2 flex-wrap">
-                {orderedDataFromLocal.length !==0 && orderedDataFromLocal?.map((item, index)=> (
+                {cartEmptyIndicator && orderedDataFromLocal.length !== 0 && orderedDataFromLocal?.map((item, index) => {
+                    if (item && tokenVal) {
+                        const itemToken = item.token ? item.token.slice(0, 92) : '';
+                        const tokenValSlice = tokenVal.slice(0, 92);
+                        if (itemToken === tokenValSlice) {
+                            counter++;
+                            return (
+                                <div
+                                    onClick={() => handlerOrderValue(item)}
+                                    key={index}
+                                    className="cursor-pointer w-[200px] h-[120px] text-[1.1rem] uppercase shadow-lg bg-gray-200 flex justify-center items-center"
+                                >
+                                    Order {counter}
+                                </div>
+                            );
+                        }
+                    }
+                    return null;
+                })}
+
+                {/* {orderedDataFromLocal.length !==0 && orderedDataFromLocal?.map((item, index)=> (
                     <div onClick={(index)=>handlerOrderValue(index)} key={index} className="cursor-pointer w-[200px] h-[120px] text-[1.1rem] uppercase shadow-lg bg-gray-200 flex justify-center items-center">
                         Order {index+1}
                     </div>
-                ))}
-                {orderedDataFromLocal.length === 0 &&
+                ))} */}
+
+
+                
+                {!cartEmptyIndicator &&
                     <div className="w-full flex justify-center items-center">
                         <img src={emptyCart} alt="" />
                     </div>
@@ -88,75 +193,82 @@ const MyAccount = () => {
                 </button>
 
                 <div className="flex  justify-center">
-                    {orderedDataFromLocal[clickedCartNumber-1].cartData !== 0 && (
+                    {selectedOrderedProduct.cartData !== 0 && (
                         <>
                             <div className="bg-gray-100 flex flex-col py-3 md2:w-[80%] md2:flex-row">
                                 <div className="bg-gray-100 flex flex-col items-center  md2:w-[60%]">
-                                    {!orderedDataFromLocal[clickedCartNumber-1].cartData
+                                    {!selectedOrderedProduct.cartData
                                     ? "Loading"
-                                    : orderedDataFromLocal[clickedCartNumber-1].cartData.map((item) => (
+                                    : selectedOrderedProduct.cartData?.map((item) => (
+                                        
                                         <div
                                             key={item._id}
                                             className="my-2 bg-white shadow-lg w-[90%] flex flex-col"
                                         >
                                             <div className="flex gap-2  p-3">
-                                            <div className="p-2">
-                                                <img
-                                                className="w-[220px] h-[200px]"
-                                                src={item.product.displayImage}
-                                                alt=""
-                                                />
-                                            </div>
-                                            <div className="w-full">
-                                                <p
-                                                className={`${
-                                                    isMobile ? "text-[1rem]" : "text-[1.1rem]"
-                                                } w-[90%] font-bold px-2`}
-                                                >
-                                                {item.product.name}
-                                                </p>
-                                                {/* <p className={`${isMobile?'text-[0.9rem]':'text-[1rem]'} opacity-70 px-2`}>singleProduct?.subCategory</p> */}
-                                                <p className="p-2">
-                                                <span
-                                                    className={`${
-                                                    isMobile ? "text-[0.9rem]" : "text-[1rem]"
-                                                    } font-bold`}
-                                                >
-                                                    ₹ {item.product.price}
-                                                </span>
-                                                <span
-                                                    className={`line-through ${
-                                                    isMobile ? "text-[0.8rem]" : "text-[0.9rem]"
-                                                    } px-1 opacity-70`}
-                                                >
-                                                    ₹{" "}
-                                                    {item.product.price +
-                                                    item.product.price * (50 / 100)}
-                                                </span>
-                                                <span
-                                                    className={`px-1 ${
-                                                    isMobile ? "text-[0.8rem]" : "text-[0.9rem]"
-                                                    } text-green-500 font-bold`}
-                                                >
-                                                    (50% Off)
-                                                </span>
-                                                </p>
-                                                <div className="border "></div>
-                                                <div className="flex justify-around">
-                                                {/* <div>
-                                                        Color: Cream
-                                                    </div>
-                                                    <div>
-                                                        Size: 34
-                                                    </div> */}
+                                            <div className="flex flex-col md2:flex-row">
+                                                <div className="p-2">
+                                                    <img
+                                                    className="w-[220px] h-[200px]"
+                                                    src={item.product.displayImage}
+                                                    alt=""
+                                                    />
                                                 </div>
-                                                <div className="border "></div>
+                                                <div className="w-full">
+                                                    <p
+                                                    className={`${
+                                                        isMobile ? "text-[1rem]" : "text-[1.1rem]"
+                                                    } w-[90%] font-bold px-2`}
+                                                    >
+                                                    {item.product.name}
+                                                    </p>
+                                                    {/* <p className={`${isMobile?'text-[0.9rem]':'text-[1rem]'} opacity-70 px-2`}>singleProduct?.subCategory</p> */}
+                                                    <p className="p-2">
+                                                    <span
+                                                        className={`${
+                                                        isMobile ? "text-[0.9rem]" : "text-[1rem]"
+                                                        } font-bold`}
+                                                    >
+                                                        ₹ {item.product.price}
+                                                    </span>
+                                                    <span
+                                                        className={`line-through ${
+                                                        isMobile ? "text-[0.8rem]" : "text-[0.9rem]"
+                                                        } px-1 opacity-70`}
+                                                    >
+                                                        ₹{" "}
+                                                        {item.product.price +
+                                                        item.product.price * (50 / 100)}
+                                                    </span>
+                                                    <span
+                                                        className={`px-1 ${
+                                                        isMobile ? "text-[0.8rem]" : "text-[0.9rem]"
+                                                        } text-green-500 font-bold`}
+                                                    >
+                                                        (50% Off)
+                                                    </span>
+                                                    </p>
+                                                    <div className="border "></div>
+                                                    <div className="flex justify-around">
+                                                    {/* <div>
+                                                            Color: Cream
+                                                        </div>
+                                                        <div>
+                                                            Size: 34
+                                                        </div> */}
+                                                    </div>
+                                                    <div className="border "></div>
+                                                </div>
+
                                             </div>
                                             </div>
                                             <div className="px-4">Quantity: {item.quantity}</div>
                                             <div className="border"></div>
+
                                         </div>
-                                        ))}
+                                    ))}
+
+                                    
                                 </div>
                                 <div className=" w-[100%] md2:w-[35%] bg-white mt-2 h-fit p-4">
                                     <div className="text-[1.1rem] font-bold tracking-wider my-2">Your Order Details</div>
@@ -165,7 +277,7 @@ const MyAccount = () => {
                                             First Name: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.firstName}
+                                            {selectedOrderedProduct.userData.firstName}
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -173,7 +285,7 @@ const MyAccount = () => {
                                             Last Name: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.lastName}
+                                            {selectedOrderedProduct.userData.lastName}
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -181,7 +293,7 @@ const MyAccount = () => {
                                             Last Name: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.email}
+                                            {selectedOrderedProduct.userData.email}
                                         </div>
                                     </div>
                                     
@@ -190,7 +302,7 @@ const MyAccount = () => {
                                             Address: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.address}
+                                            {selectedOrderedProduct.userData.address}
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -198,7 +310,7 @@ const MyAccount = () => {
                                             City: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.city}
+                                            {selectedOrderedProduct.userData.city}
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -206,7 +318,7 @@ const MyAccount = () => {
                                             Pin Code: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.pincode}
+                                            {selectedOrderedProduct.userData.pincode}
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -214,7 +326,7 @@ const MyAccount = () => {
                                             State: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.state}
+                                            {selectedOrderedProduct.userData.state}
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -222,7 +334,7 @@ const MyAccount = () => {
                                             Phone: 
                                         </div>
                                         <div className="whitespace-no-wrap w-[150px] overflow-hidden overflow-ellipsis">
-                                            {orderedDataFromLocal[clickedCartNumber-1].userData.phone}
+                                            {selectedOrderedProduct.userData.phone}
                                         </div>
                                     </div>
 
@@ -233,7 +345,7 @@ const MyAccount = () => {
                         </>
                     )}
                     <div>
-                        {orderedDataFromLocal[clickedCartNumber-1].cartData.length === 0 && (
+                        {selectedOrderedProduct.cartData?.length === 0 && (
                         <div className="w-full flex flex-col justify-center items-center">
                             <div className="flex bg-red-300 justify-center">
                             <img className="w-[80%]" src={emptyCart} alt="" />
@@ -275,9 +387,9 @@ const MyAccount = () => {
         } else if (location.pathname === '/myaccount/coupons') {
             setCurrentLocation('coupons');
         }
-        addressFetch();
+
         handlerWishListGetting(token);
-        gettingDetailsOutFromProfile(token, "", "");
+        gettingDetailsOutFromProfile(token,"", "", "");
         setProductsFavHeartId([]);
         productsIdArray = [];
 
@@ -287,9 +399,20 @@ const MyAccount = () => {
             behavior: "smooth",
         });
 
+        
+        
+        for (let i=0; i<orderedDataFromLocal.length; i++) {
+            if (orderedDataFromLocal[i]?.token?.slice(0, 92) === tokenVal?.slice(0, 92)) {
+                setCartEmptyIndicator(true);
+                break;
+            } else {
+                setCartEmptyIndicator(false);
+            }
+        }
+
     }, [location.pathname, refreshNavbar, refresher]);
     
-    
+    //#region ------------Form----------------
     const handlerLogout = () => {
         setLoginCheck(false);
         refreshNavbar();
@@ -314,6 +437,128 @@ const MyAccount = () => {
             setUserNameError(false);
         }
     }
+    
+    const pinCodeFetching = async(value) => {
+        const response = await fetch(`https://api.postalpincode.in/pincode/${value}`);
+        const result = await response.json();
+        if (result[0].Status === "Success") {
+            setStateValue(result[0].PostOffice[0].State);
+            setCityValue(result[0].PostOffice[0].District);
+            setPinCodeCity(result[0].PostOffice[0].District);
+            setPinCodeState(result[0].PostOffice[0].State);
+            setPinCodeNotMatch(true);
+            setCity(true);
+            setState(true);
+        } else {
+            setStateValue("");
+            setCityValue("");
+            setPinCodeCity("");
+            setPinCodeState("");
+            setPinCodeNotMatch(false);
+            setCity(false);
+            setState(false);
+        }
+    }
+
+    const handlerFirstName = (e) => {
+        if ( isTextFormat (e.target.value)) {
+            setFirstName(true);
+            setFirstNameValue(e.target.value);
+        } else {
+            setFirstName(false);
+        }
+    }
+
+    const handlerLastName = (e) => {
+        if (isTextFormat (e.target.value)) {
+            setLastName(true);
+            setLastNameValue(e.target.value);
+        } else {
+            setLastName(false);
+        }
+    }
+
+    const handlerEmail = (e) => {
+        setEmailValue(e.target.value);
+        if ( isValidEmail(e.target.value) ) {
+            setEmail(true);
+        } else {
+            setEmail(false);
+        }
+    }
+
+    const handlerPhoneNumber = (e) => {
+        setPhoneValue(e.target.value);
+        if (e.target.value.length === 10) {
+            setPhone(true);
+        } else {
+            setPhone(false);
+        }
+    }
+
+    const handlerPinCode = (e) => {
+        setPinCodeValue(e.target.value);
+        if (e.target.value.length === 6) {
+            setPinCode(true);
+            pinCodeFetching(e.target.value);
+        } else {
+            setPinCode(false);
+        }
+    }
+
+    const handlerCity = (e) => {
+        if (isTextFormat (e.target.value)) {
+            setCity(true);
+            setCityValue(e.target.value);
+        } else {
+            setCity(false);
+        }
+    }
+    
+    const handlerState = (e) => {
+        if (isTextFormat (e.target.value)) {
+            setState(true);
+            setStateValue(e.target.value);
+        } else {
+            setState(false);
+        }
+    }
+
+    const handlerAddress = (e) => {
+        if (e.target.value) {
+            setAddress(true);
+            setAddressValue(e.target.value);
+            
+        } else {
+            setAddress(false);
+        }
+        setDataMerging ({
+            firstName: firstNameValue,
+            lastName: lastNameValue,
+            email: emailValue,
+            phone: phoneValue,
+            pincode: pinCodeValue,
+            city: cityValue,
+            state: stateValue,
+            address: e.target.value,
+        })
+       if (firstNameValue && lastNameValue && emailValue && phoneValue &&
+        cityValue && stateValue && e.target.value) {
+            setAddressBooleanCondition(true);
+        }
+    }
+    
+    
+
+    const isValidEmail = (value) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    };
+
+    const isTextFormat = (value) => {
+        return /^[a-zA-Z\-]+$/;
+    }
+    //#endregion ------------Form----------------
+
     
     const handlerMobileViewToggler = () => {
         setMobileViewToggler(true);
@@ -432,15 +677,132 @@ const MyAccount = () => {
     };
 
     const handlerProfileNameMobUpdate = () => {
-        gettingDetailsOutFromProfile(tokenVal, profileNameFromType, mobileNumber);
+        gettingDetailsOutFromProfile(tokenVal, profileNameFromType,"", mobileNumber);
         handleClick();
     }
+    const handlerAddressUpdate = () => {
+        gettingDetailsOutFromProfile(tokenVal, profileNameFromType, dataMerging, mobileNumber);
+        handleClick();
+    }
+
 
     const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
       setOpen(true);
     };
+
+
+    const addressField = (
+        <div className='m-2 w-[100%] md2:w-[50%]'>
+            <div className="flex items-center">
+                <h1 className="mx-2 font-semibold">Save Your Address</h1>
+                <Tooltip title="Edit">
+                    <Switch onChange={() => handlerSwitchControl()} />                                    
+                </Tooltip>
+            </div>
+            <div className=' flex p-2 gap-2 w-full justify-between '>
+                <TextField
+                    label="First Name"
+                    disabled={!togglerSwitch}
+                    type="input"
+                    error={firstName ? false : true}
+                    className=" w-1/2 border-solid"
+                    onChange={(e)=>handlerFirstName(e)}
+                    value={firstNameValue}
+                    />
+                <TextField                                    
+                    label="Last Name"
+                    disabled={!togglerSwitch}
+                    type="input"
+                    error={lastName ? false : true}                                    
+                    className=' w-1/2'
+                    onChange={(e)=>handlerLastName(e)}
+                    value={lastNameValue}
+                    />
+            </div>
+            <div className='flex p-2 gap-2 w-full justify-between'>
+                <div className="w-full">
+                    <TextField
+                        label="Email"
+                        disabled={true}
+                        type="input"                                    
+                        error={email ? false : true}
+                        className='w-full'
+                        onChange={(e)=>handlerEmail(e)}
+                        value={emailValue}
+                    />
+                    <div className="text-[0.8rem] text-green-400">Changing Email is prohibited</div>
+                </div>
+            </div>
+            <div className='flex p-2 gap-2 w-full justify-between'>
+                <TextField
+                    label="Phone Number"
+                    disabled={!togglerSwitch}
+                    type="number"
+                    error={phone ? false : true}
+                    className='w-1/2'
+                    onChange={(e) => handlerPhoneNumber(e)}
+                    value={phoneValue}
+                />
+                <div className="w-1/2">
+                    <TextField                                    
+                        label="Pin Code"
+                        disabled={!togglerSwitch}
+                        type="number"
+                        error={pinCode ? false : true}
+                        className='w-full'
+                        onChange={(e)=>handlerPinCode(e)}
+                        value={pinCodeValue}
+                    />
+                    {!pinCodeNotMatch && togglerSwitch &&
+                        <div className="text-[0.9rem] text-red-500">
+                            Please Enter Valid Pin Code
+                        </div>
+                    }
+                </div>
+            </div>
+            <div className=' flex p-2 gap-2 w-full justify-between'>
+                
+                    <TextField                       
+                        label="City / District"
+                        disabled={!togglerSwitch}
+                        type="input"
+                        error={city ? false : true}
+                        className='w-1/2'
+                        value={cityValue}
+                        onChange={(e)=>handlerCity(e)}
+                    />
+                
+                <TextField                                    
+                    label="State"
+                    type="input"
+                    disabled={!togglerSwitch}
+                    error={state ? false : true}
+                    className='w-1/2'
+                    value={stateValue}
+                    onChange={(e)=>handlerState(e)}
+                />
+            </div>
+            <div className='flex p-2 gap-2 w-full justify-between'>
+                <TextField
+                    label="Address (House No, Street, Area)"
+                    type="input"
+                    disabled={!togglerSwitch}
+                    error={address ? false : true}
+                    className='w-full'  
+                    onChange={(e)=>handlerAddress(e)}
+                    value={addressValue}
+                />
+            </div>
+            {addressBooleanCondition &&
+                <button onClick={()=>handlerAddressUpdate()} className="w-full text-center bg-yellow-300 my-4 py-2 rounded-lg uppercase">Save Changes</button>
+            }
+            {!addressBooleanCondition &&
+                <button className="w-full text-center bg-gray-300 my-4 py-2 rounded-lg uppercase">Save Changes</button>
+            }
+        </div>
+    )
 
 
     const handleClose = (reason) => {
@@ -450,7 +812,7 @@ const MyAccount = () => {
         setOpen(false);
       };
 
-    const gettingDetailsOutFromProfile = async (tokenVal, name, mobile) => {
+    const gettingDetailsOutFromProfile = async (tokenVal, name, address, mobile) => {
 
         let myHeaders = new Headers();
         myHeaders.append("projectID", "vflsmb93q9oc");
@@ -464,6 +826,18 @@ const MyAccount = () => {
                 "address": "",
                 "phone": mobile
             });
+        } else if (address.firstName) {
+            raw = JSON.stringify({
+                "name": `${address.firstName} ${address.lastName}`,
+                "phone": `${address.phone}`,
+                "address": {
+                    "street": `${address.address}`,
+                    "city": `${address.city}`,
+                    "state": `${address.state}`,
+                    "country": "India",
+                    "zipCode": `${address.pincode}`
+                }
+            });
         }
 
         let requestOptions = {
@@ -476,12 +850,30 @@ const MyAccount = () => {
         const response = await fetch("https://academics.newtonschool.co/api/v1/user/updateme", requestOptions)
         if (response.ok) {
             const result = await response.json();
-            console.log('result', result);
+            localStorage.setItem('userCompleteData', JSON.stringify(result));
             if (result.data.user.profileImage) {
                 setIsProfilePicFetched(true);
             }
             setProfilePicFetch(result.data.user.profileImage);
             setProfileDisplayName(result.data.user.name);
+            setMobileNumber(result.data.user.phone);
+            setFirstNameValue(result.data.user.name.slice(0, result.data.user.name.indexOf(' ')));
+            setLastNameValue(result.data.user.name.slice(result.data.user.name.indexOf(' ')));
+            setEmailValue(result.data.user.email);
+            setPhoneValue(result.data.user.phone);
+            setPinCodeValue(result.data.user.address[0].zipCode);
+            setCityValue(result.data.user.address[0].city);
+            setStateValue(result.data.user.address[0].state);
+            setAddressValue(result.data.user.address[0].street);
+
+            setFirstName(true);
+            setLastName(true);
+            setEmail(true);
+            setPhone(true);
+            setPinCode(true);
+            setCity(true);
+            setState(true);
+            setAddress(true);
         }
     }
 
@@ -606,36 +998,12 @@ const MyAccount = () => {
         )) : ("Loading"))
     )
 
-    const addressFetch = () => {
-        let myHeaders = new Headers();
-        myHeaders.append("projectID", "vflsmb93q9oc");
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2I2YTljY2JiNmQ1ZTcxNjZiMDhmNyIsImlhdCI6MTY5ODM5MjczMiwiZXhwIjoxNzI5OTI4NzMyfQ.d6E94J5VknhRQXpPaQzxfzaqXO9_89sYkr41VWSDiRU");
-
-        var raw = JSON.stringify({
-        "name": "raviprasaath",
-        "address": "asd",
-        "phone": "1234567890"
-        });
-
-        var requestOptions = {
-        method: 'PATCH',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("https://academics.newtonschool.co/api/v1/user/updateme", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-    }
 
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
         if (selectedFile) {
-        setProfilePic(selectedFile);
+            setProfilePic(selectedFile);
         }
     }
 
@@ -713,7 +1081,7 @@ const MyAccount = () => {
             }
             {currentLocation === 'address'&&
                 <div>
-                    Address
+                    {addressField}
                 </div>
             }
             {currentLocation === 'profile'&&
@@ -730,8 +1098,6 @@ const MyAccount = () => {
                                 </div>
                                 )
                             }
-                             
-    
                             <input type="file" onChange={handleFileChange}  accept="image/*" className="text-[0.8rem]" placeholder="Choose a Photo" />
                             <button onClick={()=>handlerProfilePicUpload()} className="cursor-pointer bg-black text-white px-2 py-1 rounded-lg text-[0.8rem]">Submit</button>
                         </aside>
@@ -747,8 +1113,9 @@ const MyAccount = () => {
                         <p className="text-[0.85rem] my-2 text-green-500">Changing Email is prohibited</p>
                         {/* <div className="text-[0.8rem]">Birth Date</div>
                         <input className="input-border" type="date" placeholder="mm/dd/yyyy" name="" id="" /> */}
+                        
                         <div className="text-[0.8rem]">Phone Number</div>
-                        <input onChange={(e)=>handlerMobileNumber(e)} className="input-border" type="number" placeholder={mobileNumber === "" ? "Phone Number" : mobileNumber}  maxLength="10" name="" id="" />
+                        <input onChange={(e)=>handlerMobileNumber(e)} className="input-border" type="number" placeholder={mobileNumber?.length===0 || !mobileNumber ? "Phone Number" : mobileNumber}  maxLength="10" name="" id="" />
                         {!phoneError && 
                             <p className="text-[0.85rem] my-2 text-red-500">Please Enter Valid Phone Number</p>
                         }

@@ -365,6 +365,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="/clothing/printed-t-shirt"
+                                className="hover:text-yellow-500"
                                 state={{ data: printedTShirt }}
                               >
                                 Printed T-Shirts
@@ -373,6 +374,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/oversized-t-shirt"
+                                className="hover:text-yellow-500"
                                 state={{ data: overSizedTShirt }}
                               >
                                 Oversize T-Shirts
@@ -382,6 +384,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/plain-t-shirt"
                                 state={{ data: plainTShirt }}
+                                className="hover:text-yellow-500"
                               >
                                 Plain T-Shirts
                               </Link>
@@ -390,6 +393,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/full-sleeve-t-shirt"
                                 state={{ data: fullSleeveTShirt }}
+                                className="hover:text-yellow-500"
                               >
                                 Full Sleeve T-Shirts
                               </Link>
@@ -398,6 +402,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/shirts"
                                 state={{ data: shirts }}
+                                className="hover:text-yellow-500"
                               >
                                 Shirts
                               </Link>
@@ -406,6 +411,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/polo-t-shirt"
                                 state={{ data: poloTShirt }}
+                                className="hover:text-yellow-500"
                               >
                                 Polo T-Shirts
                               </Link>
@@ -414,6 +420,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/athleisure"
                                 state={{ data: athleisure }}
+                                className="hover:text-yellow-500"
                               >
                                 Athleisure T-Shirts
                               </Link>
@@ -422,6 +429,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/halfSleeve"
                                 state={{ data: halfSleeve }}
+                                className="hover:text-yellow-500"
                               >
                                 Half Sleeve T-Shirts
                               </Link>
@@ -430,12 +438,13 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/plus-size-t-shirt"
                                 state={{ data: plusSizeTShirt }}
+                                className="hover:text-yellow-500"
                               >
                                 Plus Size T-Shirts
                               </Link>
                             </div>
                             <div>
-                              <Link to="/out-of-stock">
+                              <Link className="hover:text-yellow-500" to="/out-of-stock">
                                 Combos
                               </Link>
                             </div>
@@ -447,17 +456,18 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/cargo-jogger"
                                 state={{ data: cargoJogger }}
+                                className="hover:text-yellow-500"
                               >
                                 Joggers
                               </Link>
                             </div>
                             <div>
-                              <Link to="clothing/chino" state={{ data: chino }}>
+                              <Link to="clothing/chino" className="hover:text-yellow-500" state={{ data: chino }}>
                                 Chino Pants
                               </Link>
                             </div>
                             <div>
-                              <Link to="clothing/boxer" state={{ data: boxer }}>
+                              <Link to="clothing/boxer" state={{ data: boxer }} className="hover:text-yellow-500" >
                                 Boxers
                               </Link>
                             </div>
@@ -465,6 +475,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/shorts"
                                 state={{ data: shorts }}
+                                className="hover:text-yellow-500"
                               >
                                 Shorts
                               </Link>
@@ -473,17 +484,18 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/cargo-jogger"
                                 state={{ data: cargoJogger }}
+                                className="hover:text-yellow-500"
                               >
                                 Cargo Pants
                               </Link>
                             </div>
                             <div>
-                              <Link to="clothing/jeans" state={{ data: jeans }}>
+                              <Link to="clothing/jeans" className="hover:text-yellow-500" state={{ data: jeans }}>
                                 Jeans
                               </Link>
                             </div>
                             <div>
-                              <Link to="clothing/boxer" state={{ data: boxer }}>
+                              <Link to="clothing/boxer" state={{ data: boxer }} className="hover:text-yellow-500">
                                 Couple Boxers
                               </Link>
                             </div>
@@ -493,19 +505,21 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/travel"
+                                className="hover:text-yellow-500"
                                 state={{ data: travelData }}
                               >
                                 Travel
                               </Link>
                             </div>
                             <div>
-                              <Link to="clothing/gym" state={{ data: gym }}>
+                              <Link to="clothing/gym" className="hover:text-yellow-500" state={{ data: gym }}>
                                 Gym
                               </Link>
                             </div>
                             <div>
                               <Link
                                 to="clothing/cartoon"
+                                className="hover:text-yellow-500"
                                 state={{ data: cartoon }}
                               >
                                 Cartoon
@@ -515,12 +529,13 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/sports"
                                 state={{ data: sports }}
+                                className="hover:text-yellow-500"
                               >
                                 Sports
                               </Link>
                             </div>
                             <div>
-                              <Link to="clothing/music" state={{ data: music }}>
+                              <Link to="clothing/music" className="hover:text-yellow-500" state={{ data: music }}>
                                 Music
                               </Link>
                             </div>
@@ -530,6 +545,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/plain-t-shirt"
                                 state={{ data: plainTShirt }}
+                                className="hover:text-yellow-500"
                               >
                                 Plain Shirts
                               </Link>
@@ -538,6 +554,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/urban-shirt"
                                 state={{ data: urban }}
+                                className="hover:text-yellow-500"
                               >
                                 Urban Shirts
                               </Link>
@@ -546,6 +563,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/casual"
                                 state={{ data: casual }}
+                                className="hover:text-yellow-500"
                               >
                                 Casual Shirts
                               </Link>
@@ -556,16 +574,17 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               Special
                             </div>
                             <div>
-                              <Link to="/out-of-stock">Couple T-Shirts</Link>
+                              <Link to="/out-of-stock" className="hover:text-yellow-500">Couple T-Shirts</Link>
                             </div>
                             <div>
-                              <Link to="/out-of-stock">Bestseller T Shirts</Link>
+                              <Link to="/out-of-stock" className="hover:text-yellow-500">Bestseller T Shirts</Link>
                             </div>
                             <div className="MenubarSeparator"></div>
                             <div className="font-bold">Winter Wears</div>
                             <div>
                               <Link
                                 to="/clothing/jackets"
+                                className="hover:text-yellow-500"
                                 state={{ data: jackets }}
                               >
                                 Jackets
@@ -575,6 +594,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/sweat-shirt"
                                 state={{ data: sweatShirts }}
+                                className="hover:text-yellow-500"
                               >
                                 Sweatshirts
                               </Link>
@@ -583,6 +603,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/hoodies"
                                 state={{ data: hoodies }}
+                                className="hover:text-yellow-500"
                               >
                                 Hoodies
                               </Link>
@@ -615,6 +636,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/printed-t-shirt-women"
                                 state={{ data: printedTShirtWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Printed T-Shirts
                               </Link>
@@ -623,6 +645,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/oversized-t-shirt-women"
                                 state={{ data: overSizedTShirtWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Oversize T-Shirts
                               </Link>
@@ -631,6 +654,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/kurti-women"
                                 state={{ data: kurtiWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Kurti
                               </Link>
@@ -639,6 +663,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/shirt-women"
                                 state={{ data: shirtsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Women Shirts
                               </Link>
@@ -647,6 +672,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/half-sleeve-t-shirt-women"
                                 state={{ data: halfSleeveWomen }}
+                                className="hover:text-yellow-500"
                               >
                               Half Sleeve T-Shirts
                               </Link>
@@ -655,6 +681,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="/clothing/plain-t-shirt-women"
                                 state={{ data: plainTShirtWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Plain T-Shirts
                               </Link>
@@ -663,6 +690,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/full-sleeve-t-shirt-women"
                                 state={{ data: fullSleeveTShirtWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Full Sleeve T-Shirts
                               </Link>                            
@@ -671,6 +699,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/kurta-women"
                                 state={{ data: kurtaWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Kurta Sets
                               </Link>
@@ -680,6 +709,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/crop-tops-women"
                                 state={{ data: cropTopsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Crop Tops
                               </Link>
@@ -689,13 +719,14 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/plus-size-t-shirt-women"
                                 state={{ data: plusSizeTShirtsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Plus Size T-Shirts
                               </Link>
                             
                             </div>
                             <div>
-                              <Link to="/out-of-stock">
+                              <Link to="/out-of-stock" className="hover:text-yellow-500" >
                                 Combos
                               </Link>
                             </div>
@@ -707,6 +738,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/boxer-women"
                                 state={{ data: boxerWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Boxer for Women
                               </Link>
@@ -715,6 +747,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/jeggings-women"
                                 state={{ data: jeggingsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Jeggings
                               </Link>
@@ -724,6 +757,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/pants-women"
                                 state={{ data: pantsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Women Pants
                               </Link>
@@ -732,6 +766,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="/out-of-stock"
+                                className="hover:text-yellow-500"
                               >
                                 Couple Boxers
                               </Link>                            
@@ -743,6 +778,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/travel-women"
                                 state={{ data: travelWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Travel
                               </Link>                          
@@ -751,6 +787,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/gym-women"
                                 state={{ data: gymWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Gym
                               </Link>
@@ -760,6 +797,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/cartoon-women"
                                 state={{ data: cartoonWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Cartoon
                               </Link>
@@ -769,6 +807,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/sports-women"
                                 state={{ data: sportsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Sports
                               </Link>
@@ -777,6 +816,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/music-women"
                                 state={{ data: musicWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Music
                               </Link>
@@ -785,6 +825,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/biker-women"
                                 state={{ data: bikerWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Biker
                               </Link>
@@ -793,6 +834,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/funky-women"
                                 state={{ data: funkyWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Funky
                               </Link>                            
@@ -801,6 +843,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/god-women"
                                 state={{ data: godWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 God
                               </Link>
@@ -809,6 +852,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/quote-women"
                                 state={{ data: quotesWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Quotes
                               </Link>
@@ -820,7 +864,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             </div>
                             <div>
                               <Link
-                                to="/out-of-stock"                                
+                                to="/out-of-stock"
+                                className="hover:text-yellow-500"
                               >
                                 Couple T-Shirts
                               </Link>
@@ -828,14 +873,16 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               
                             <div>
                               <Link
-                                to="/out-of-stock"                                
+                                to="/out-of-stock"
+                                className="hover:text-yellow-500"
                               >
                                 Bestseller T Shirts
                               </Link>
                             </div>
                             <div>
                               <Link
-                                to="/out-of-stock"                                
+                                to="/out-of-stock"
+                                className="hover:text-yellow-500"
                               >
                                 Deals and Offers
                               </Link>
@@ -846,6 +893,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                               <Link
                                 to="clothing/jackets-women"
                                 state={{ data: jacketsWomen }}
+                                className="hover:text-yellow-500"
                               >
                                 Jackets
                               </Link>
@@ -854,7 +902,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/sweatshirt-women"
-                                state={{ data: sweatShirtsWomen }}                                
+                                state={{ data: sweatShirtsWomen }}
+                                className="hover:text-yellow-500"                                
                               >
                                 Sweatshirts
                               </Link>
@@ -863,7 +912,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/hoodies-women"
-                                state={{ data: hoodiesWomen }}                                
+                                state={{ data: hoodiesWomen }}
+                                className="hover:text-yellow-500"
                               >
 
                                 Hoodies
@@ -883,7 +933,7 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
 
                     <NavigationMenu.Item className="hover:bg-yellow-300">
                       <NavigationMenu.Trigger className="hover:bg-yellow-300 MenubarTrigger cursor-pointer text-[0.85rem] font-bold">
-                        <Link to="/out-of-stock">
+                        <Link  to="/out-of-stock">
                           COMBOS
                         </Link>
                       </NavigationMenu.Trigger>
@@ -893,7 +943,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                       <NavigationMenu.Trigger className="hover:bg-yellow-300 MenubarTrigger cursor-pointer text-[0.85rem] font-bold">
                         <Link
                           to="clothing/joggers"
-                          state={{ data: joggers }}                                
+                          state={{ data: joggers }}
+                          className="hover:text-yellow-500"
                         >
                           JOGGERS
                         </Link>
@@ -905,7 +956,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/cargo"
-                                state={{ data: cargoJogger }}                                
+                                state={{ data: cargoJogger }}
+                                className="hover:text-yellow-500"
                               >
                                 Cargo Joggers
                               </Link>
@@ -913,7 +965,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/knitted"
-                                state={{ data: knitted }}                                
+                                state={{ data: knitted }}
+                                className="hover:text-yellow-500"
                               >
                                 Knitted Joggers
                               </Link>
@@ -951,7 +1004,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/travel-common"
-                                state={{ data: travelCommon }}                                
+                                state={{ data: travelCommon }}
+                                className="hover:text-yellow-500"
                               >                            
                               Travel
                             </Link>
@@ -959,7 +1013,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                             <Link
                                 to="clothing/urban-common"
-                                state={{ data: urbanCommon }}                                
+                                state={{ data: urbanCommon }}
+                                className="hover:text-yellow-500"
                               >
                                 Urban Shirts
                               </Link>                          
@@ -967,7 +1022,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/tshirt-common"
-                                state={{ data: tShirtsCommon }}                                
+                                state={{ data: tShirtsCommon }}
+                                className="hover:text-yellow-500"
                               >
                                 T-Shirts
                               </Link>
@@ -975,7 +1031,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/hawaiian-common"
-                                state={{ data: hawaiianCommon }}                                
+                                state={{ data: hawaiianCommon }}
+                                className="hover:text-yellow-500"
                               >
                                 Hawaiian Shirts
                               </Link>
@@ -984,7 +1041,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                               <Link
                                 to="clothing/savage-common"
-                                state={{ data: savageCommon }}                                
+                                state={{ data: savageCommon }}
+                                className="hover:text-yellow-500"
                               >
                                 Savage Denim
                               </Link>                            
@@ -992,7 +1050,8 @@ const NavbarLayer2 = ({ handlerNavbarToggle }) => {
                             <div>
                             <Link
                                 to="/out-of-stock"
-                                state={{ data: travelCommon }}                                
+                                state={{ data: travelCommon }}
+                                className="hover:text-yellow-500"
                               >
                                 Beyoung Originals
                               </Link>                              
